@@ -8,8 +8,13 @@ app.use(cors());
 
 const PORT = process.env.PORT || 4005;
 
+const events = [];
+
 app.post('/events', (req, res) => {
   const { type, data } = req.body;
+
+  events.push({ type, data });
+  console.log(events);
 
   axios({
     method: 'POST',
@@ -34,6 +39,8 @@ app.post('/events', (req, res) => {
       type,
       data,
     },
+  }).catch((error) => {
+    console.log(error);
   });
   axios({
     method: 'POST',
@@ -45,6 +52,10 @@ app.post('/events', (req, res) => {
   });
 
   res.send({ status: 'OK' });
+});
+
+app.get('/events', (req, res) => {
+  res.send(events);
 });
 
 app.listen(PORT, () => {
