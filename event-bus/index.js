@@ -35,6 +35,14 @@ app.post('/events', (req, res) => {
       data,
     },
   });
+  axios({
+    method: 'POST',
+    url: 'http://localhost:4003/events',
+    data: {
+      type,
+      data,
+    },
+  });
 
   res.send({ status: 'OK' });
 });
