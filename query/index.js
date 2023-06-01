@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 4002;
 const EVENTS_TYPE = {
   POST_CREATED: 'PostCreated',
   COMMENT_CREATED: 'CommentCreated',
+  COMMENT_UPDATED: 'CommentUpdated',
 };
 
 const posts = {};
@@ -29,6 +30,16 @@ app.post('/events', (req, res) => {
     const { id, content, postId, status } = data;
     const post = posts[postId];
     post.comments.push({ id, content, status });
+  }
+  if (type === EVENTS_TYPE.COMMENT_UPDATED) {
+    const { id, content, status, postId } = data;
+    const post = posts[postId];
+    const comment = post.comments.find((comment) => {
+      return comment.id === id;
+    });
+
+    comment.status = status;
+    comment.content = content;
   }
 
   console.log(posts);
