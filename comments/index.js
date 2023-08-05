@@ -36,7 +36,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
   await axios({
     method: 'POST',
-    url: 'http://localhost:4005/events',
+    url: 'http://event-bus-srv:4005/events',
     data: {
       type: EVENT_TYPE.COMMENT_CREATED,
       data: {
@@ -66,7 +66,7 @@ app.post('/events', async (req, res) => {
 
     await axios({
       method: 'POST',
-      url: 'http://localhost:4005/events',
+      url: 'http://event-bus-srv:4005/events',
       data: {
         type: EVENT_TYPE.COMMENT_UPDATED,
         data: {

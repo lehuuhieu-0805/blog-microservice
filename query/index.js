@@ -55,7 +55,7 @@ app.listen(PORT, async () => {
 
   const res = await axios({
     method: 'GET',
-    url: 'http://localhost:4005/events',
+    url: 'http://event-bus-srv:4005/events',
   });
 
   console.log(res.data);

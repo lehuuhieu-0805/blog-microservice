@@ -18,7 +18,7 @@ app.post('/events', (req, res) => {
 
   axios({
     method: 'POST',
-    url: 'http://localhost:4000/events',
+    url: 'http://posts-clusterip-srv:4000/events',
     data: {
       type,
       data,
@@ -26,7 +26,7 @@ app.post('/events', (req, res) => {
   });
   axios({
     method: 'POST',
-    url: 'http://localhost:4001/events',
+    url: 'http://comments-srv:4001/events',
     data: {
       type,
       data,
@@ -34,7 +34,7 @@ app.post('/events', (req, res) => {
   });
   axios({
     method: 'POST',
-    url: 'http://localhost:4002/events',
+    url: 'http://query-srv:4002/events',
     data: {
       type,
       data,
@@ -44,7 +44,7 @@ app.post('/events', (req, res) => {
   });
   axios({
     method: 'POST',
-    url: 'http://localhost:4003/events',
+    url: 'http://moderation-srv:4003/events',
     data: {
       type,
       data,

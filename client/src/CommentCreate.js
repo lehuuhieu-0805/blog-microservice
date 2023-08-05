@@ -9,7 +9,7 @@ function CommentCreate({ postId }) {
 
     await axios({
       method: 'POST',
-      url: `http://localhost:4001/posts/${postId}/comments`,
+      url: `http://posts.com/posts/${postId}/comments`,
       data: {
         content,
       },
